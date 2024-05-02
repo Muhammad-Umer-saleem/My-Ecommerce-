@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
 import NavImg from '../assets/images/logo.svg';
-import SearchBarIcon from '../assets/images/bx-search.svg';
-import ContactIcon from '../assets/images/bxs-contact.svg';
-import HeartIcon from '../assets/images/bx-heart.svg';
-import ShoppingIcon from '../assets/images/bx-shopping-bag.svg';
+import { Heart, ShoppingBag, User, Search } from 'lucide-react';
+import { X } from 'lucide-react';
 
 const Navbar = () => {
+  const [isBoxOpen, setIsBoxOpen] = useState(false);
+
+  const toggleBox = () => {
+    setIsBoxOpen(!isBoxOpen);
+  };
+
   return (
     <div id="root">
       <div className="header">
@@ -14,21 +18,39 @@ const Navbar = () => {
           <img src={NavImg} alt="Company Logo" />
         </div>
 
-         <div className="searchBar-container">
-        <div className="searchBar">
-          <input type="text" placeholder="Enter your product's name" />
-          <div class="search-icon">
-            <img src={SearchBarIcon} alt="Search Icon" />
+        <div className="searchBar-container">
+          <div className="searchBar">
+            <input type="text" placeholder="Search for products" />
+            <div className="search-icon">
+              <Search />
+            </div>
           </div>
+        </div>
+
+        <div className="menu-social-container">
+          <i id="menu-icon" onClick={toggleBox}>
+            {isBoxOpen ? <X size={30} /> : <i className="fas fa-bars"></i>}
+          </i>
         </div>
       </div>
 
-        <div className="menu-social-container">
-          <i id="menu-icon" className="fas fa-bars"></i>
-          <div className="Social-icons">
-            <img src={ContactIcon} alt="Contact" />
-            <img src={HeartIcon} alt="Heart" />
-            <img src={ShoppingIcon} alt="Shopping" />
+      {isBoxOpen && (
+        <div className="backdrop" onClick={toggleBox}></div>
+      )}
+
+      <div className={`slide-in-box ${isBoxOpen ? 'open' : ''}`}>
+        <div className="social-icons-with-names">
+          <div className="icon-item">
+            <Heart size={30} />
+            <span>Favorites</span>
+          </div>
+          <div className="icon-item">
+            <User size={30} />
+            <span>Profile</span>
+          </div>
+          <div className="icon-item">
+            <ShoppingBag size={30} />
+            <span>Cart</span>
           </div>
         </div>
       </div>
