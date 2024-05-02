@@ -4,6 +4,9 @@ import NavImg from '../assets/images/logo.svg';
 import { Heart, ShoppingBag, User, Search } from 'lucide-react';
 import { X } from 'lucide-react';
 
+
+// header page
+
 const Navbar = () => {
   const [isBoxOpen, setIsBoxOpen] = useState(false);
 
