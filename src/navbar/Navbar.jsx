@@ -3,26 +3,23 @@ import './Navbar.css';
 import NavImg from '../assets/images/logo.svg';
 import { Heart, ShoppingBag, User, Search, X, Menu } from 'lucide-react';
 
-
-// header
-
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen((prevState) => !prevState); 
+    setIsMenuOpen((prevState) => !prevState);
   };
 
   return (
     <div className="navbar">
       <div className="header">
         <div className="logo">
-          <img src={NavImg} alt="Company Logo" />
+          <img src={NavImg} alt="Company Logo" className="logo-img" />
         </div>
 
         <div className="searchBar-container">
           <div className="searchBar">
-            <input type="text" placeholder="Search for products" />
+            <input type="text" placeholder="Search for products" onClick={(e) => e.stopPropagation()} />
             <div className="search-icon">
               <Search />
             </div>
@@ -30,7 +27,7 @@ const Navbar = () => {
         </div>
 
         <div className="menu-container" onClick={toggleMenu}>
-          {isMenuOpen ? <X size={30} /> : <Menu size={30} />} 
+          {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
         </div>
 
         <div className="social-icons">
@@ -46,11 +43,9 @@ const Navbar = () => {
         </div>
       </div>
 
-      {isMenuOpen && (
-        <div className="backdrop" onClick={toggleMenu}></div> 
-      )}
+      {isMenuOpen && <div className="backdrop" onClick={toggleMenu}></div>}
 
-      <div className={`centered-box ${isMenuOpen ? 'open' : ''}`}> 
+      <div className={`centered-box ${isMenuOpen ? 'open' : ''}`}>
         <div className="social-icons-with-names">
           <div className="icon-item" onClick={toggleMenu}>
             <Heart size={30} />
