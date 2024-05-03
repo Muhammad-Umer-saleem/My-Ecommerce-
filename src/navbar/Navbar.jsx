@@ -3,6 +3,9 @@ import './Navbar.css';
 import NavImg from '../assets/images/logo.svg';
 import { Heart, ShoppingBag, User, Search, X, Menu } from 'lucide-react';
 
+
+// header
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
