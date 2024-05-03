@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
 import './Navbar.css';
 import NavImg from '../assets/images/logo.svg';
-import { Heart, ShoppingBag, User, Search } from 'lucide-react';
-import { X } from 'lucide-react';
-
-
-// header page
+import { Heart, ShoppingBag, User, Search, X, Menu } from 'lucide-react';
 
 const Navbar = () => {
-  const [isBoxOpen, setIsBoxOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleBox = () => {
-    setIsBoxOpen(!isBoxOpen);
+  const toggleMenu = () => {
+    setIsMenuOpen((prevState) => !prevState); 
   };
 
   return (
-    <div id="root">
+    <div className="navbar">
       <div className="header">
         <div className="logo">
           <img src={NavImg} alt="Company Logo" />
@@ -30,28 +26,38 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="menu-social-container">
-          <i id="menu-icon" onClick={toggleBox}>
-            {isBoxOpen ? <X size={30} /> : <i className="fas fa-bars"></i>}
-          </i>
+        <div className="menu-container" onClick={toggleMenu}>
+          {isMenuOpen ? <X size={30} /> : <Menu size={30} />} 
         </div>
-      </div>
 
-      {isBoxOpen && (
-        <div className="backdrop" onClick={toggleBox}></div>
-      )}
-
-      <div className={`slide-in-box ${isBoxOpen ? 'open' : ''}`}>
-        <div className="social-icons-with-names">
+        <div className="social-icons">
           <div className="icon-item">
             <Heart size={30} />
-            <span>Favorites</span>
           </div>
           <div className="icon-item">
             <User size={30} />
-            <span>Profile</span>
           </div>
           <div className="icon-item">
+            <ShoppingBag size={30} />
+          </div>
+        </div>
+      </div>
+
+      {isMenuOpen && (
+        <div className="backdrop" onClick={toggleMenu}></div> 
+      )}
+
+      <div className={`centered-box ${isMenuOpen ? 'open' : ''}`}> 
+        <div className="social-icons-with-names">
+          <div className="icon-item" onClick={toggleMenu}>
+            <Heart size={30} />
+            <span>Favorites</span>
+          </div>
+          <div className="icon-item" onClick={toggleMenu}>
+            <User size={30} />
+            <span>Profile</span>
+          </div>
+          <div className="icon-item" onClick={toggleMenu}>
             <ShoppingBag size={30} />
             <span>Cart</span>
           </div>
