@@ -12,38 +12,34 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <div className="header">
-        <div className="logo">
-          <img src={NavImg} alt="Company Logo" className="logo-img" />
-        </div>
+      <div className="header-wrapper">
+        <div className="header">
+          <div className="logo">
+            <img src={NavImg} alt="Company Logo" />
+          </div>
 
-        <div className="searchBar-container">
-          <div className="searchBar">
-            <input type="text" placeholder="Search for products" onClick={(e) => e.stopPropagation()} />
-            <div className="search-icon">
-              <Search />
+          <div className="searchBar-container">
+            <div className="searchBar">
+              <input type="text" placeholder="Search for products" />
+              <div className="search-icon">
+                <Search size={20} />
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="menu-container" onClick={toggleMenu}>
-          {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
-        </div>
+          <div className="menu-container" onClick={toggleMenu}>
+            {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
+          </div>
 
-        <div className="social-icons">
-          <div className="icon-item">
+          <div className="social-icons">
             <Heart size={30} />
-          </div>
-          <div className="icon-item">
-            <User size={30} />
-          </div>
-          <div className="icon-item">
             <ShoppingBag size={30} />
+            <User size={30} />
           </div>
         </div>
       </div>
 
-      {isMenuOpen && <div className="backdrop" onClick={toggleMenu}></div>}
+      {isMenuOpen && <div className="backdrop" onClick={toggleMenu} />}
 
       <div className={`centered-box ${isMenuOpen ? 'open' : ''}`}>
         <div className="social-icons-with-names">
@@ -51,13 +47,13 @@ const Navbar = () => {
             <Heart size={30} />
             <span>Favorites</span>
           </div>
+          <div class="icon-item" onClick={toggleMenu}>
+            <ShoppingBag size={30} />
+            <span>Cart</span>
+          </div>
           <div className="icon-item" onClick={toggleMenu}>
             <User size={30} />
             <span>Profile</span>
-          </div>
-          <div className="icon-item" onClick={toggleMenu}>
-            <ShoppingBag size={30} />
-            <span>Cart</span>
           </div>
         </div>
       </div>
