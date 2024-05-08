@@ -54,6 +54,7 @@ body {
 .social-icons {
   display: flex;
   gap: 18px;
+  padding-right: 25px;
 }
 
 .centered-box {
@@ -78,6 +79,7 @@ body {
   justify-content: space-around;
   gap: 20px;
   padding: 10px;
+  margin-left: 10px;
 }
 
 .icon-item {

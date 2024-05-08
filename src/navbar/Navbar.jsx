@@ -47,7 +47,7 @@ const Navbar = () => {
             <Heart size={30} />
             <span>Favorites</span>
           </div>
-          <div class="icon-item" onClick={toggleMenu}>
+          <div className="icon-item" onClick={toggleMenu}>
             <ShoppingBag size={30} />
             <span>Cart</span>
           </div>
